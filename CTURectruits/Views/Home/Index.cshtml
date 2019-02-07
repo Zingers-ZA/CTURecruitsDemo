@@ -1,0 +1,31 @@
+﻿@model CTURectruits.ViewModels.HomeVM
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>CTU Recruits</h1>
+    <p class="lead">CTU recruits is a platform which serves to provide users with an easy way to seek jobs, as well as allowing employers to easily find quality employees</p>
+    <p><a href="localhost:57838/Users/Register" class="btn btn-warning btn-lg">Sign Up &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Ready for success?</h2>
+        <p>
+            Sign Up above as a job seeker and post a cv online, or as a employer to start finding the best talent in your area
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Register","Users")">Create acount &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>See who we've helped</h2>
+        <p>Browse through all the people we have helped find their dream job</p>
+        <p><a class="btn btn-default" href="@Url.Action("Success","Users")">CTU Success &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Already have an account?</h2>
+        <p>Log in above to update your profile and view our list of job seekers!</p>
+        <p><a class="btn btn-default" href="@Url.Action("Login","Home")">Login!&raquo;</a></p>
+    </div>
+</div>

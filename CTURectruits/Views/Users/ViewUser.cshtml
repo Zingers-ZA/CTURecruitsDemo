@@ -1,0 +1,85 @@
+﻿@model CTURectruits.ViewModels.ViewUserVM
+
+@{
+    ViewBag.Title = "View User";
+}
+
+<h2>View User</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userToView.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userToView.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userToView.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userToView.Email)
+        </dd>
+
+        @if (Model.userToView.ShowCV)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.userToView.CV)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.userToView.CV)
+            </dd>
+        }
+        else
+        {
+            var emaillink = "mailto:" + Model.userToView.Email;
+        
+            <dt>
+                @Html.DisplayNameFor(model => model.userToView.CV)
+            </dt>
+            <dd>
+                <a href="@emaillink">Request CV</a>
+            </dd>
+
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userToView.YearsXP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userToView.YearsXP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userToView.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userToView.Area)
+        </dd>
+
+    </dl>
+    @if (Model.CurrentUserInstance.UserTypeId == 2 && Model.CurrentUserInstance.UserId != Model.userToView.UserId)
+    {
+        var emaillink = "mailto:" + Model.userToView.Email;
+        <a href="@emaillink">I am interested</a>
+
+        <p>@Html.ActionLink("Back to List", "Employ")</p>
+        
+    }
+</div>
+<p>
+    @if (Model.CurrentUserInstance.Role == 2)
+    {
+        @Html.ActionLink("Edit User", "Edit", new { id = Model.userToView.UserId })
+        <text>|</text>
+    }
+
+</p>

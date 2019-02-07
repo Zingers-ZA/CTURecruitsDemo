@@ -1,0 +1,97 @@
+﻿@using CTURectruits.ViewModels
+@model EmployVM
+
+@{
+    ViewBag.Title = "Employ";
+}
+
+<h2>Employ</h2>
+
+@using (Html.BeginForm("Search", "Users", "Post"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.keywordFilter, "Search Keyword:", htmlAttributes: new { @class = "control-label col-md-1" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.keywordFilter, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.yearsFilter, "Years of Experience", htmlAttributes: new { @class = "control-label col-md-1" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.yearsFilter, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    
+    <input type="submit" value="Search" class="btn btn-default col-md-2" />
+    
+
+}
+
+<br>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Users[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users[0].CV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users[0].YearsXP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users[0].Area)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model.Users)
+    {
+        if (Model.CurrentUserInstance.Role != 2)
+        {
+            if (item.UserId == Model.CurrentUserInstance.UserId || item.UserTypeId == 2)
+            {
+                continue;
+            }
+        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @if (item.ShowCV)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.CV)
+                </td>
+            }
+            else
+            {
+                var emaillink = "mailto:" + item.Email;
+                <td>
+                    <a href="@emaillink">Request CV</a>
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.YearsXP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.ActionLink("View User", "ViewUser", new { id = item.UserId }) 
+
+                @if (Model.CurrentUserInstance.Role == 2)
+                {
+                   <text>|</text> 
+                   @Html.ActionLink("Delete User", "Delete", new { id = item.UserId })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

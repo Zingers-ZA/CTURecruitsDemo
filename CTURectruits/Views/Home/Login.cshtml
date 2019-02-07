@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-center" style="Height:200px">
+        @using (Html.BeginForm())
+        {
+            <input class="form-control" name="Email" id="Email" type="text" placeholder="Enter your email here" />               <br />
+            <input class="form-control" name="Password" id="Password" type="password" placeholder="Enter your password here" />     <br />
+            <input class="form-control" name="" type="submit" value="Login" />                                              <br />
+        @Html.ActionLink("Sign Up", "Register", "Users")
+        }
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+

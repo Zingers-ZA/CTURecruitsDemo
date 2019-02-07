@@ -1,0 +1,59 @@
+﻿@using CTURectruits.ViewModels
+@model SuccessVM
+@{
+    ViewBag.Title = "Success";
+}
+
+<h2> Users who have found Success on CTU Recruits</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.successUsers[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.successUsers[0].CV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.successUsers[0].YearsXP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.successUsers[0].Area)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model.successUsers)
+    {
+        
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @if (item.ShowCV)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.CV)
+                </td>
+            }
+            else
+            {
+                var emaillink = "mailto:" + item.Email;
+                <td>
+                    <a href="@emaillink">Request CV</a>
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.YearsXP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            
+        </tr>
+    }
+</table>
+

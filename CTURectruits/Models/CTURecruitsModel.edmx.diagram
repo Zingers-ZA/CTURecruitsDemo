@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a1b3ad122f9a45e0a669beaee0c73945" Name="Diagram1">
+        <EntityTypeShape EntityType="CTURecruitsModel.Skill" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTURecruitsModel.Social" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTURecruitsModel.User" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CTURecruitsModel.UserType" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="CTURecruitsModel.FK_Skills_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CTURecruitsModel.FK_Socials_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CTURecruitsModel.FK_User_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="CTURecruitsModel.FK_UserType_UserType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CTURecruitsModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
